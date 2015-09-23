@@ -1,0 +1,8 @@
+{
+	"name": "zs-model-schema-types",
+	"description": "ZS Library: zs-model-schema-types",
+	"options": {
+		"outdir": "./docs",
+		"exclude": "dist,tmp,test,node_modules"
+	}
+}
