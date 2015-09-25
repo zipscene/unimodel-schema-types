@@ -4,8 +4,8 @@ const {
 	documentUpdateShorthand,
 	documentQueryShorthand,
 	documentAggregateShorthand
-} = require('../../lib');
-const TestModel = require('../lib/test-model');
+} = require('../lib');
+const TestModel = require('./lib/test-model');
 
 describe('shorthand', function() {
 	it('should create SchemaTypeDocument with shorthand', function() {
