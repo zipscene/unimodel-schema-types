@@ -1,14 +1,22 @@
 const { expect } = require('chai');
+const XError = require('xerror');
 const { createSchema } = require('zs-common-schema');
 const { documentShorthand } = require('../lib');
 const TestModel = require('./lib/test-model');
 
 describe('SchemaTypeDocument', function() {
-	it('should create SchemaTypeDocument from shorthand', function() {
+	it('should create SchemaTypeDocument from schema shorthand', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
-		let shorthand = documentShorthand(instance);
+		let schema = createSchema({ doc: instance });
+		let expectedSchema = createSchema({ doc: documentShorthand(instance) });
 
-		expect(shorthand).to.deep.equal({
+		expect(schema.getData()).to.deep.equal(expectedSchema.getData());
+	});
+
+	it('should create SchemaTypeDocument from shorthand function', function() {
+		let instance = new TestModel('Test', createSchema({ foo: String }));
+
+		expect(documentShorthand(instance)).to.deep.equal({
 			type: 'document',
 			modelName: 'Test',
 			modelType: 'TestModel',
@@ -17,14 +25,32 @@ describe('SchemaTypeDocument', function() {
 		});
 	});
 
+	it('should create SchemaTypeDocument with options from shorthand function', function() {
+		let instance = new TestModel('Test', createSchema({ foo: String }));
+
+		expect(documentShorthand(instance, { someOption: true })).to.deep.equal({
+			type: 'document',
+			modelName: 'Test',
+			modelType: 'TestModel',
+			documentSchema: createSchema({ foo: String }),
+			options: { someOption: true }
+		});
+	});
+
 	it('should normalize values', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
-		let doc = documentShorthand(instance);
-
-		let schema = createSchema({ doc });
+		let schema = createSchema({ doc: documentShorthand(instance) });
 
 		expect(schema.normalize({ doc: { foo: 32 } })).to.deep.equal({
 			doc: { foo: '32' }
 		});
+	});
+
+	it('should validate values', function() {
+		let instance = new TestModel('Test', createSchema({ foo: String }));
+		let schema = createSchema({ doc: documentShorthand(instance) });
+
+		expect(() => schema.validate({ doc: { foo: '32' } })).to.not.throw(XError);
+		expect(() => schema.validate({ doc: { foo: 32 } })).to.throw(XError);
 	});
 });
