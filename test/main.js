@@ -1,4 +1,5 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
+const XError = require('xerror');
 const { defaultSchemaFactory } = require('zs-common-schema');
 const {
 	SchemaTypeDocument,
