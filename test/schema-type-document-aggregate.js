@@ -1,10 +1,12 @@
 const expect = require('chai').expect;
 const XError = require('xerror');
-const { createSchema } = require('zs-common-schema');
-const { documentAggregateShorthand } = require('../lib');
+const { defaultSchemaFactory, createSchema } = require('zs-common-schema');
+const { registerTypes, documentAggregateShorthand } = require('../lib');
 const TestModel = require('./lib/test-model');
 
 describe('SchemaTypeDocumentAggregate', function() {
+	before(() => registerTypes(defaultSchemaFactory));
+
 	it('should create SchemaTypeDocumentAggregate from shorthand function', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
 

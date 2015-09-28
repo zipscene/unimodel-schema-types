@@ -1,10 +1,12 @@
 const { expect } = require('chai');
 const XError = require('xerror');
-const { createSchema } = require('zs-common-schema');
-const { documentShorthand } = require('../lib');
+const { defaultSchemaFactory, createSchema } = require('zs-common-schema');
+const { registerTypes, documentShorthand } = require('../lib');
 const TestModel = require('./lib/test-model');
 
 describe('SchemaTypeDocument', function() {
+	before(() => registerTypes(defaultSchemaFactory));
+
 	it('should create SchemaTypeDocument from schema shorthand', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
 		let schema = createSchema({ doc: instance });
