@@ -118,19 +118,19 @@ Convenient shorthand methods are included as an alternative to the verbose synta
 
 ```javascript
 const {
-	documentShorthand,
-	documentUpdateShorthand,
-	documentQueryShorthand,
-	documentAggregateShorthand
+	documentType,
+	documentUpdateType,
+	documentQueryType,
+	documentAggregateType
 } = require('zs-model-schema-types');
 
 let instance = new FooModel(createSchema({ foo: String }));
 
 let schema = createSchema({
-	doc: documentShorthand(instance),
-	docUpdate: documentUpdateShorthand(instance),
-	docQuery: documentQueryShorthand(instance),
-	docAggregate: documentAggregateShorthand(instance)
+	doc: documentType(instance),
+	docUpdate: documentUpdateType(instance),
+	docQuery: documentQueryType(instance),
+	docAggregate: documentAggregateType(instance)
 });
 ```
 
