@@ -43,7 +43,9 @@ describe('SchemaTypeDocument', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
 		let schema = createSchema({ doc: documentType(instance) });
 
-		expect(schema.normalize({ doc: { foo: 32 } })).to.deep.equal({
+		expect(schema.normalize({
+			doc: { foo: 32 }
+		})).to.deep.equal({
 			doc: { foo: '32' }
 		});
 	});
@@ -52,7 +54,19 @@ describe('SchemaTypeDocument', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
 		let schema = createSchema({ doc: documentType(instance) });
 
-		expect(() => schema.validate({ doc: { foo: '32' } })).to.not.throw(XError);
-		expect(() => schema.validate({ doc: { foo: 32 } })).to.throw(XError);
+		const goodFn = () => {
+			schema.validate({
+				doc: { foo: '32' }
+			});
+		};
+
+		const badFn = () => {
+			schema.validate({
+				doc: { foo: 32 }
+			});
+		};
+
+		expect(goodFn).to.not.throw(XError);
+		expect(badFn).to.throw(XError);
 	});
 });

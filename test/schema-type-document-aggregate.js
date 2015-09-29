@@ -33,18 +33,40 @@ describe('SchemaTypeDocumentAggregate', function() {
 
 	it('should normalize values', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
-		let schema = createSchema({ doc: documentAggregateType(instance) });
+		let aggregateDoc = documentAggregateType(instance);
+		let schema = createSchema({ aggregateDoc });
 
-		expect(schema.normalize({ doc: { foo: 32 } })).to.deep.equal({
-			doc: { foo: '32' }
+		expect(schema.normalize({
+			aggregateDoc: { stats: 'foo', total: true }
+		})).to.deep.equal({
+			aggregateDoc: {
+				stats: { foo: { count: true } },
+				total: true
+			}
 		});
 	});
 
 	it('should validate values', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
-		let schema = createSchema({ doc: documentAggregateType(instance) });
+		let aggregateDoc = documentAggregateType(instance);
+		let schema = createSchema({ aggregateDoc }, { skipValidate: true });
 
-		expect(() => schema.validate({ doc: { foo: '32' } })).to.not.throw(XError);
-		expect(() => schema.validate({ doc: { foo: 32 } })).to.throw(XError);
+		const goodFn = () => {
+			schema.validate({
+				aggregateDoc: {
+					stats: { foo: { count: true } },
+					total: true
+				}
+			});
+		};
+
+		const badFn = () => {
+			schema.validate({
+				aggregateDoc: { stats: 'foo', total: true }
+			});
+		};
+
+		expect(goodFn).to.not.throw(XError);
+		expect(badFn).to.throw(XError);
 	});
 });

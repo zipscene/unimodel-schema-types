@@ -1,5 +1,4 @@
 const expect = require('chai').expect;
-const XError = require('xerror');
 const { defaultSchemaFactory, createSchema } = require('zs-common-schema');
 const { registerTypes, documentQueryType } = require('../lib');
 const TestModel = require('./lib/test-model');
@@ -33,20 +32,12 @@ describe('SchemaTypeDocumentQuery', function() {
 
 	it('should normalize values', function() {
 		let instance = new TestModel('Test', createSchema({ foo: String }));
-		let doc = documentQueryType(instance);
-		let schema = createSchema({ doc });
+		let schema = createSchema({ queryDoc: documentQueryType(instance) });
 
-		expect(schema.normalize({ doc: { foo: 32 } })).to.deep.equal({
-			doc: { foo: '32' }
+		expect(schema.normalize({
+			queryDoc: { foo: 32 }
+		})).to.deep.equal({
+			queryDoc: { foo: '32' }
 		});
-	});
-
-	it('should validate values', function() {
-		let instance = new TestModel('Test', createSchema({ foo: String }));
-		let doc = documentQueryType(instance);
-		let schema = createSchema({ doc });
-
-		expect(() => schema.validate({ doc: { foo: '32' } })).to.not.throw(XError);
-		expect(() => schema.validate({ doc: { foo: 32 } })).to.throw(XError);
 	});
 });
