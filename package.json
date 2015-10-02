@@ -20,7 +20,7 @@
     "xerror": "^1.0.0",
     "zs-common-query": "^1.6.0",
     "zs-common-schema": "^1.5.0",
-    "zs-unimodel": "0.1.0"
+    "zs-unimodel": "0.2.0"
   },
   "devDependencies": {
     "broccoli": "^0.16.8",
