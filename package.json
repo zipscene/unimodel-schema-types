@@ -1,6 +1,6 @@
 {
   "name": "zs-model-schema-types",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ZS Library: zs-model-schema-types",
   "main": "./dist/lib/index.js",
   "repository": {
