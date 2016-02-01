@@ -18,9 +18,9 @@
     "babel-runtime": "^5.8.24",
     "lodash": "^3.10.1",
     "xerror": "^1.0.0",
-    "zs-common-query": "^1.6.0",
+    "zs-common-query": "^1.7.1",
     "zs-common-schema": "^1.7.3",
-    "zs-unimodel": "0.2.0"
+    "zs-unimodel": "^0.5.25"
   },
   "devDependencies": {
     "broccoli": "^0.16.8",
