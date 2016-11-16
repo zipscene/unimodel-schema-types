@@ -1,11 +1,16 @@
 {
-  "name": "zs-model-schema-types",
+  "name": "unimodel-schema-types",
   "version": "0.2.5",
-  "description": "ZS Library: zs-model-schema-types",
+  "description": "Use unimodel documents as common-schema types",
   "main": "./dist/lib/index.js",
+  "keywords": [
+    "unimodel",
+    "schema",
+    "common-schema"
+  ],
   "repository": {
     "type": "git",
-    "url": "git@git.zipscene.com:zsapilibs/zs-model-schema-types.git"
+    "url": "https://github.com/zipscene/unimodel-schema-types.git"
   },
   "scripts": {
     "lint": "node ./node_modules/.bin/eslint . || exit 0",
@@ -15,29 +20,28 @@
     "prepublish": "npm run-script build && npm run-script docs"
   },
   "dependencies": {
-    "babel-runtime": "^5.8.24",
-    "lodash": "^3.10.1",
-    "xerror": "^1.0.0",
-    "zs-common-query": "^1.7.1",
-    "zs-common-schema": "^1.7.3",
-    "zs-unimodel": "^0.5.25"
+    "babel-runtime": "6.18.0",
+    "common-query": "^1.10.3",
+    "common-schema": "^1.8.0",
+    "lodash": "^4.17.2",
+    "unimodel-core": "^0.6.14",
+    "xerror": "^1.1.1"
   },
   "devDependencies": {
-    "broccoli": "^0.16.8",
-    "broccoli-babel-transpiler": "^5.4.5",
+    "broccoli": "^0.16.9",
+    "broccoli-babel-transpiler": "^5.6.1",
     "broccoli-cli": "^1.0.0",
-    "broccoli-merge-trees": "^0.2.3",
+    "broccoli-merge-trees": "^1.1.4",
     "broccoli-static-compiler": "^0.2.2",
     "broccoli-wrap": "0.0.2",
-    "chai": "^3.3.0",
-    "chai-as-promised": "^5.1.0",
-    "es6-promise": "^3.0.2",
-    "eslint": "^1.5.1",
-    "mocha": "^2.3.3",
-    "source-map-support": "^0.3.2",
-    "yuidocjs": "^0.9.0"
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "es6-promise": "^4.0.5",
+    "eslint": "^3.10.2",
+    "eslint-config-zipscene": "^0.1.11",
+    "mocha": "^3.1.2",
+    "source-map-support": "^0.4.6",
+    "yuidocjs": "^0.10.2"
   },
-  "publishConfig": {
-    "registry": "https://npm.zipscene.com/"
-  }
+  "license": "Apache-2.0"
 }

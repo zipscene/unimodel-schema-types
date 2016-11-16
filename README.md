@@ -1,7 +1,7 @@
-# zs-model-schema-types
+# unimodel-schema-types
 
-`zs-model-schema-types` is a collection of schema types for [zs-common-schema](https://git.zipscene.com/zsapilibs/zs-common-schema).
-They encapsulate model-related concepts found in [zs-unimodel](https://git.zipscene.com/zsapilibs/zs-unimodel).
+`unimodel-schema-types` is a collection of schema types for [common-schema](https://git.zipscene.com/zsapilibs/common-schema).
+They encapsulate model-related concepts found in [unimodel-core](https://git.zipscene.com/zsapilibs/unimodel-core).
 
 
 ## Overview
@@ -16,8 +16,8 @@ It contains common-schema `SchemaType` classes for `Document`, `DocumentUpdate`,
 To use these schema types in projects, first register them with a schema factory.
 
 ```javascript
-const { defaultSchemaFactory } = require('zs-common-schema');
-const { registerTypes } = require('zs-model-schema-types');
+const { defaultSchemaFactory } = require('common-schema');
+const { registerTypes } = require('unimodel-schema-types');
 
 registerTypes(defaultSchemaFactory);
 ```
@@ -122,7 +122,7 @@ const {
 	documentUpdateType,
 	documentQueryType,
 	documentAggregateType
-} = require('zs-model-schema-types');
+} = require('unimodel-schema-types');
 
 let instance = new FooModel(createSchema({ foo: String }));
 
