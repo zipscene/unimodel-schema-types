@@ -1,6 +1,6 @@
 {
   "name": "unimodel-schema-types",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Use unimodel documents as common-schema types",
   "main": "./dist/lib/index.js",
   "keywords": [
