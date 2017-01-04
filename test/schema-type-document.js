@@ -73,4 +73,11 @@ describe('SchemaTypeDocument', function() {
 		expect(goodFn).to.not.throw(XError);
 		expect(badFn).to.throw(XError);
 	});
+
+	it('should allow schemas without a modelType', function() {
+		createSchema({
+			type: 'document',
+			modelName: 'Foo'
+		});
+	});
 });
