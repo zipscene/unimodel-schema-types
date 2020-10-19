@@ -1,6 +1,6 @@
 {
   "name": "unimodel-schema-types",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Use unimodel documents as common-schema types",
   "main": "./lib/index.js",
   "keywords": [
@@ -14,26 +14,23 @@
   },
   "scripts": {
     "lint": "node ./node_modules/.bin/eslint . || exit 0",
-    "docs": "node ./node_modules/.bin/yuidoc .",
-    "test": "node ./node_modules/.bin/mocha ./test -R spec",
-    "prepublishOnly": "npm run-script docs"
+    "test": "node ./node_modules/.bin/mocha ./test -R spec"
   },
   "dependencies": {
-    "common-query": "^2.0.1",
-    "common-schema": "^2.0.1",
-    "lodash": "^4.17.10",
-    "xerror": "^1.1.2"
+    "common-query": "^3.0.0",
+    "common-schema": "^3.0.0",
+    "lodash": "^4.17.20",
+    "xerror": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^5.5.0",
-    "mocha": "^5.2.0",
-    "unimodel-core": "^1.0.0",
-    "yuidocjs": "^0.10.2"
+    "eslint": "^7.7.0",
+    "mocha": "^8.1.2",
+    "unimodel-core": "^2.0.0"
   },
   "license": "Apache-2.0",
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 14.0.0"
   }
 }

@@ -1,8 +1,0 @@
-{
-	"name": "unimodel-schema-types",
-	"description": "ZS Library: unimodel-schema-types",
-	"options": {
-		"outdir": "./docs",
-		"exclude": "dist,tmp,test,node_modules"
-	}
-}
