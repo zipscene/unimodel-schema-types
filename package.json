@@ -20,6 +20,7 @@
     "common-query": "^3.0.0",
     "common-schema": "^3.0.0",
     "lodash": "^4.17.20",
+    "objtools": "^3.0.0",
     "xerror": "^2.0.0"
   },
   "devDependencies": {
